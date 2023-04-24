@@ -1,15 +1,15 @@
 import React from 'react'
 import classes from './Footer.module.css'
 
-function Footer() {
+function Footer({ backlog, finished }) {
     return (
         <footer className={classes.footer}>
             <div className={classes.canbanInfo}>
                 <div className={classes.activeTasks}>
-                    <p>Active tasks: 21</p>
+                    <p>Active tasks: {backlog.length}</p>
                 </div>
                 <div className={classes.finishedTasks}>
-                    <p>Finished tasks: 2</p>
+                    <p>Finished tasks: {finished.length}</p>
                 </div>
             </div>
 
