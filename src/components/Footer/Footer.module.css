@@ -1,0 +1,23 @@
+.footer {
+    padding: 17px 19px 17px 20px;
+    background: #0067A3;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    bottom: 0;
+}
+.canbanInfo {
+    display: flex;
+}
+.activeTasks {
+    margin-right: 36px;
+}
+
+.by {
+    display: flex;
+}
+.by span {
+    font-size: 22px;
+    color: #000;
+}

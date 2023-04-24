@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import TaskItem from './components/TaskWrapper/TaskItem/TaskItem';
+import TaskWrapper from './components/TaskWrapper/TaskWrapper';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [task, setTask] = React.useState({
+        
+    })
+
+    return (
+        <div className='app'>
+            <Header />
+
+            <div className="container">
+                <TaskWrapper title={'Backlog'}>
+                    <TaskItem />
+                    <TaskItem />
+                    <TaskItem />
+                    <TaskItem />
+                    <TaskItem />
+                </TaskWrapper>
+
+                <TaskWrapper title={'Ready'}>
+                    <TaskItem />
+                    <TaskItem />
+                    <TaskItem />
+                    <TaskItem />
+                    <TaskItem />
+                </TaskWrapper>
+
+                <TaskWrapper title={'In Progress'}>
+                    <TaskItem />
+                    <TaskItem />
+                    <TaskItem />
+                    <TaskItem />
+                    <TaskItem />
+                </TaskWrapper>
+
+                <TaskWrapper title={'Finished'}>
+                    <TaskItem />
+                    <TaskItem />
+                    <TaskItem />
+                    <TaskItem />
+                    <TaskItem />
+                </TaskWrapper>
+
+            </div>
+
+            <Footer />
+        </div>
+    );
 }
 
 export default App;
