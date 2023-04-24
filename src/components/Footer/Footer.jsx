@@ -1,7 +1,11 @@
 import React from 'react'
+import { ContextTask } from '../../context/ContextProvider'
 import classes from './Footer.module.css'
 
-function Footer({ backlog, finished }) {
+function Footer() {
+
+    const { backlog, finished } = React.useContext(ContextTask)
+
     return (
         <footer className={classes.footer}>
             <div className={classes.canbanInfo}>
