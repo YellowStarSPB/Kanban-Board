@@ -4,7 +4,7 @@ import Backlog from '../components/Backlog/Backlog';
 import InProgress from '../components/InProgress/InProgress';
 import Finished from '../components/Finished/Finished';
 import TaskItem from '../components/TaskItem/TaskItem';
-//generate id
+import closeBtn from '../img/close-btn.svg'
 
 import { ContextTask } from '../context/ContextProvider';
 
@@ -18,10 +18,12 @@ function Home() {
         addNewTask,
         moveToReady,
         moveToProgress,
-        moveToFinished } = React.useContext(ContextTask)
+        moveToFinished,
+        showMessage,
+        setShowMessage, } = React.useContext(ContextTask)
 
     return (
-        <section className="container">
+        <main className="container">
             {/*Backlog container */}
             <Backlog title={'Backlog'} addNewTask={addNewTask}>
                 {backlog.map(item => (
@@ -46,7 +48,13 @@ function Home() {
                     <TaskItem key={finished.id} item={finished} />
                 ))}
             </Finished>
-        </section>
+            {showMessage && <div className='message'>
+                <h2>Задача была измененна</h2>
+                <button onClick={() => setShowMessage(prev => !prev)} className='message__btn'>
+                    <img src={closeBtn} alt="close" />
+                </button>
+            </div>}
+        </main>
     )
 }
 

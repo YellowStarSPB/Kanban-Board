@@ -8,6 +8,9 @@ function ContextProvider({ children }) {
     const [ready, setReady] = React.useState(JSON.parse(localStorage.getItem('ready')) || [])
     const [inProgress, setInProgress] = React.useState(JSON.parse(localStorage.getItem('inProgress')) || [])
     const [finished, setFinished] = React.useState(JSON.parse(localStorage.getItem('finished')) || [])
+    const [showMessage, setShowMessage] = React.useState(false)
+
+
 
     React.useEffect(() => {
         localStorage.setItem('backlog', JSON.stringify(backlog))
@@ -43,6 +46,7 @@ function ContextProvider({ children }) {
         ready,
         inProgress,
         finished,
+        showMessage,
         setBacklog,
         setReady,
         setInProgress,
@@ -50,7 +54,8 @@ function ContextProvider({ children }) {
         addNewTask,
         moveToReady,
         moveToProgress,
-        moveToFinished
+        moveToFinished,
+        setShowMessage
     }
 
     return (
