@@ -7,22 +7,36 @@ import { ContextTask } from '../context/ContextProvider'
 function Task() {
     const par = useParams()
     const { backlog, ready, inProgress, finished } = React.useContext(ContextTask)
-
-    const [currentTask, setCurrentTask] = React.useState([...backlog, ...ready, ...inProgress, ...finished].find(item => item.id === par.id))
+    const { setBacklog, setReady, setInProgress, setFinished } = React.useContext(ContextTask)
+    const currentTask = [...backlog, ...ready, ...inProgress, ...finished].find(item => item.id === par.id)
     const [name, setName] = React.useState(currentTask.name)
     const [description, setDescription] = React.useState(currentTask.description)
-
-    console.log(currentTask)
 
     const handleClickbtn = (e) => {
         const newTask = { ...currentTask, name, description }
 
-        const newTasks = [...backlog, ...ready, ...inProgress, ...finished].map(item => {
-            if (item.id === par.id) {
-                item = newTask
+        switch (currentTask.status) {
+            case 'create': {
+                if (window.confirm('Вы действительно хотите изменить задачу?')) {
+                    
+                    
+                    setBacklog(prev => [...prev].map(item => item.id === currentTask.id ? item = newTask : item))
+                }
+                break;
             }
-            return item
-        })
+            case 'ready': {
+                setReady(prev => [...prev].map(item => item.id === currentTask.id ? item = newTask : item))
+                break;
+            }
+            case 'progress': {
+                setInProgress(prev => [...prev].map(item => item.id === currentTask.id ? item = newTask : item))
+                break;
+            }
+            case 'finished': {
+                setFinished(prev => [...prev].map(item => item.id === currentTask.id ? item = newTask : item))
+                break;
+            }
+        }
     }
 
     return (
@@ -32,14 +46,14 @@ function Task() {
                 <textarea
                     onChange={(e) => setDescription(e.target.value)}
                     className='task__description'
-                    value={description === '' ? "This task has no description" : description}
+                    value={description}
                 ></textarea>
                 <Link to='/' className='close-btn'>
-                    <button >
-                        <img src={closeBtn} alt="close button" />
-                    </button>
+                    <img src={closeBtn} alt="close button" />
                 </Link>
-                <button onClick={handleClickbtn}>PODTVERDITE</button>
+                <div className='btn-wrapper'>
+                    <button className='btn-submit' onClick={handleClickbtn}>submit</button>
+                </div>
             </div>
 
         </section>

@@ -17,21 +17,24 @@ function ContextProvider({ children }) {
     }, [backlog, ready, inProgress, finished])
 
     const addNewTask = (valueInput) => {
-        setBacklog(prev => [...prev, { id: v4(), name: valueInput, description: '' }])
+        setBacklog(prev => [...prev, { id: v4(), name: valueInput, description: "This task has no description", status: 'create' }])
     }
 
     const moveToReady = (id, item) => {
-        setReady(prev => [...prev, item])
+        const redy = { ...item, status: 'ready' }
+        setReady(prev => [...prev, redy])
         setBacklog(prev => prev.filter(item => item.id !== id))
     }
 
     const moveToProgress = (id, item) => {
-        setInProgress(prev => [...prev, item])
+        const progress = { ...item, status: 'progress' }
+        setInProgress(prev => [...prev, progress])
         setReady(prev => prev.filter(item => item.id !== id))
     }
 
     const moveToFinished = (id, item) => {
-        setFinished(prev => [...prev, item])
+        const finished = { ...item, status: 'finished' }
+        setFinished(prev => [...prev, finished])
         setInProgress(prev => prev.filter(item => item.id !== id))
     }
 
@@ -40,6 +43,10 @@ function ContextProvider({ children }) {
         ready,
         inProgress,
         finished,
+        setBacklog,
+        setReady,
+        setInProgress,
+        setFinished,
         addNewTask,
         moveToReady,
         moveToProgress,
