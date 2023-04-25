@@ -24,24 +24,25 @@ function Backlog({ children, title, addNewTask }) {
 
 
     return (
-        <div className={classes.taskWrapper}>
+        <section className={classes.taskWrapper}>
             <h1 className={classes.title}>{title}</h1>
             <div className={classes.tasks}>
                 {children}
+                {showInput && <div className={classes.input}>
+                    <input value={valueInput} onChange={changeInput} />
+                </div>
+                }
+
+                {showInput ? (<button disabled={valueInput === ''} onClick={handleClickBtn} className={classes.btn_submit}>
+                    <p>Submit</p>
+                </button>) : (<button onClick={handleShowInput} className={classes.btn}>
+                    <img src={addCardIcon} alt="add card" />
+                    <p>Add card</p>
+                </button>)}
             </div>
 
-            {showInput && <div className={classes.input}>
-                <input value={valueInput} onChange={changeInput} />
-            </div>
-            }
 
-            {showInput ? (<button disabled={valueInput === ''} onClick={handleClickBtn} className={classes.btn_submit}>
-                <p>Submit</p>
-            </button>) : (<button onClick={handleShowInput} className={classes.btn}>
-                <img src={addCardIcon} alt="add card" />
-                <p>Add card</p>
-            </button>)}
-        </div>
+        </section>
     )
 }
 

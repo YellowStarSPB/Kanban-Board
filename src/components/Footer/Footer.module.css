@@ -4,12 +4,16 @@
     color: #fff;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     position: relative;
     bottom: 0;
+    height: 70px;
 }
+
 .canbanInfo {
     display: flex;
 }
+
 .activeTasks {
     margin-right: 36px;
 }
@@ -17,7 +21,22 @@
 .by {
     display: flex;
 }
+
 .by span {
-    font-size: 22px;
     color: #000;
+}
+
+@media screen and (max-width: 640px) {
+    .footer {
+        flex-direction: column;
+    }
+
+    .canbanInfo>div>p {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    .by>p {
+        font-size: 14px;
+    }
 }

@@ -93,9 +93,24 @@
     width: 100%;
     padding: 8px 10px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .popupItem:hover {
     background: #DEDEDE;
     border-radius: 5px;
+}
+
+@media screen and (max-width: 927px) {
+    .taskWrapper {
+        min-height: 0;
+    }
+    .popup {
+        z-index: 1000;
+        height: 200px;
+        overflow: auto;
+    }
+    .tasks {
+        padding: 0;
+    }
 }

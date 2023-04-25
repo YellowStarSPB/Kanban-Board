@@ -16,29 +16,30 @@ function Ready({ children, title, backlog, moveToReady }) {
     }
 
     return (
-        <div className={classes.taskWrapper}>
+        <section className={classes.taskWrapper}>
             <h1 className={classes.title}>{title}</h1>
             <div className={classes.tasks}>
                 {children}
+                <div className={classes.popupWrapper}>
+                    {showPopup ? (
+                        <>
+                            <div onClick={handleShowPopup} className={classes.popupBlock}>
+                                <img src={popupArrow} alt='popup arrow' />
+                            </div>
+                            <ul className={classes.popup}>
+                                {backlog.map(item => (
+                                    <li key={item.id} onClick={() => handleClickItem(item.id, item)} className={classes.popupItem}>{item.name}</li>
+                                ))}
+                            </ul>
+                        </>
+                    ) : (<button onClick={handleShowPopup} disabled={backlog.length === 0} className={classes.btn}>
+                        <img src={addCardIcon} alt="add card" />
+                        <p>Add card</p>
+                    </button>)}
+                </div>
             </div>
-            <div className={classes.popupWrapper}>
-                {showPopup ? (
-                    <>
-                        <div onClick={handleShowPopup} className={classes.popupBlock}>
-                            <img src={popupArrow} alt='popup arrow' />
-                        </div>
-                        <ul className={classes.popup}>
-                            {backlog.map(item => (
-                                <li key={item.id} onClick={() => handleClickItem(item.id, item)} className={classes.popupItem}>{item.name}</li>
-                            ))}
-                        </ul>
-                    </>
-                ) : (<button onClick={handleShowPopup} disabled={backlog.length === 0} className={classes.btn}>
-                    <img src={addCardIcon} alt="add card" />
-                    <p>Add card</p>
-                </button>)}
-            </div>
-        </div>
+
+        </section>
     )
 }
 

@@ -76,3 +76,12 @@
     background-color: #5E6C84;
     cursor: not-allowed;
 }
+
+@media screen and (max-width: 927px) {
+    .taskWrapper {
+        min-height: 0;
+    }
+    .tasks {
+        padding: 0;
+    }
+}
