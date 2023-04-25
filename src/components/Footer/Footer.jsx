@@ -18,7 +18,7 @@ function Footer() {
             </div>
 
             <div className={classes.by}>
-                <p>Kanban board by <span>Glazov Oleg, 2023</span></p>
+                <p>Kanban board by <span>Glazov Oleg, {new Date().getFullYear()}</span></p>
             </div>
         </footer>
     )

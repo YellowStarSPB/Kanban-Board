@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Home from './pages/Home';
-import Task from './pages/Task';
+import Task from './pages/Task/Task';
 //Context Tasks
 import ContextProvider from './context/ContextProvider';
 
