@@ -70,6 +70,7 @@
 
 .popupWrapper {
     position: relative;
+    height: 200px;
 }
 
 .popupBlock {
@@ -109,8 +110,11 @@
     }
     .popup {
         z-index: 1000;
-        height: 200px;
+        height: fit-content;
         overflow: auto;
+    }
+    .popupWrapper {
+        height: 80px;
     }
     .tasks {
         padding: 0;
